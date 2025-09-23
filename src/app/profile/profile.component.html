@@ -1,165 +1,97 @@
-<div class="profile-page">
-  <div class="sidebar">
-    <app-sidenav [userName]="user.name" [userEmail]="user.email"></app-sidenav>
+<div>
+  <div style="margin-bottom:16px;">
+    <h1 style="margin:0;">Account</h1>
+    <div style="opacity:.7;">Dashboard • Profile • Account Settings</div>
   </div>
-  <div class="content">
-    <div class="max-w-4xl mx-auto px-6 py-10">
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">Account</h1>
-        <div class="text-sm text-gray-500 mt-2">Dashboard • Profile • Account Settings</div>
-      </div>
 
-      <!-- Account Sub-Navigation -->
-      <div class="mb-8">
-        <nav class="flex space-x-8 border-b border-gray-200">
-          <button 
-            class="tab-button" 
-            [class.active]="activeTab === 'general'"
-            (click)="setActiveTab('general')">
-            <span class="icon">👤</span>
-            General
-          </button>
-          <button 
-            class="tab-button" 
-            [class.active]="activeTab === 'password'"
-            (click)="setActiveTab('password')">
-            <span class="icon">🔑</span>
-            Change Password
-          </button>
-          <button 
-            class="tab-button" 
-            [class.active]="activeTab === 'settings'"
-            (click)="setActiveTab('settings')">
-            <span class="icon">⚙️</span>
-            Settings
-          </button>
-        </nav>
-      </div>
+  <mat-button-toggle-group [value]="activeTab" (change)="setActiveTab($event.value)">
+    <mat-button-toggle value="general">👤 General</mat-button-toggle>
+    <mat-button-toggle value="password">🔑 Change Password</mat-button-toggle>
+    <mat-button-toggle value="settings">⚙️ Settings</mat-button-toggle>
+  </mat-button-toggle-group>
 
-      <!-- General Tab Content -->
-      <div *ngIf="activeTab === 'general'" class="space-y-6">
-        <!-- User Information Card -->
-        <div class="card">
-          <h2 class="card-title">{{ user.name }}</h2>
-          <div class="info-row">
-            <span class="label">Email:</span>
-            <span class="value">{{ user.email }}</span>
-            <button class="change-btn">Change</button>
-          </div>
-          <div class="info-row">
-            <span class="label">Phone:</span>
-            <span class="value">{{ user.phone }}</span>
-            <button class="change-btn">Change</button>
-          </div>
-          <div class="info-row" *ngIf="user.referredBy">
-            <span class="label">Referred By:</span>
-            <span class="value">{{ user.referredBy }}</span>
-          </div>
+  <div *ngIf="activeTab === 'general'" style="display:grid; gap:16px; margin-top:16px;">
+    <mat-card>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-content>
+        <div style="display:grid; grid-template-columns: 1fr auto; gap:8px; align-items:center;">
+          <div>Email:</div>
+          <div style="font-weight:600;">{{ user.email }}</div>
+          <button mat-stroked-button color="primary">Change</button>
+          <div>Phone:</div>
+          <div style="font-weight:600;">{{ user.phone }}</div>
+          <button mat-stroked-button color="primary">Change</button>
+          <div *ngIf="user.referredBy">Referred By:</div>
+          <div *ngIf="user.referredBy" style="font-weight:600;">{{ user.referredBy }}</div>
         </div>
+      </mat-card-content>
+    </mat-card>
 
-        <!-- Indian Bank Details Card -->
-        <div class="card">
-          <h2 class="card-title">{{ bankInr.currency }} Bank Details</h2>
-          <div class="info-row">
-            <span class="label">Account Name:</span>
-            <span class="value">{{ bankInr.accountName }}</span>
-          </div>
-          <div class="info-row">
-            <span class="label">Account Number:</span>
-            <span class="value">{{ bankInr.accountNumber }}</span>
-          </div>
-          <div class="info-row" *ngIf="bankInr.ifsc">
-            <span class="label">IFSC:</span>
-            <span class="value">{{ bankInr.ifsc }}</span>
-          </div>
-          <div class="info-row">
-            <span class="label">Bank Name:</span>
-            <span class="value">{{ bankInr.bankName }}</span>
-          </div>
+    <mat-card>
+      <mat-card-title>{{ bankInr.currency }} Bank Details</mat-card-title>
+      <mat-card-content>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+          <div><div style="opacity:.7; font-size:12px;">Account Name</div><div>{{ bankInr.accountName }}</div></div>
+          <div><div style="opacity:.7; font-size:12px;">Account Number</div><div>{{ bankInr.accountNumber }}</div></div>
+          <div *ngIf="bankInr.ifsc"><div style="opacity:.7; font-size:12px;">IFSC</div><div>{{ bankInr.ifsc }}</div></div>
+          <div><div style="opacity:.7; font-size:12px;">Bank Name</div><div>{{ bankInr.bankName }}</div></div>
         </div>
+      </mat-card-content>
+    </mat-card>
 
-        <!-- What Do You Pay Card -->
-        <div class="card">
-          <h2 class="card-title">What Do You Pay?</h2>
-          <div class="info-row">
-            <span class="label">Fees:</span>
-            <span class="value">1%</span>
-          </div>
-          <div class="disclaimer">
-            Fees shown are indicative for USD. For other currencies, the same amounts are charged in the respective deposit currency.
-          </div>
-        </div>
-      </div>
+    <mat-card>
+      <mat-card-title>What Do You Pay?</mat-card-title>
+      <mat-card-content>
+        <div>Fees: <strong>1%</strong></div>
+        <div style="margin-top:8px; opacity:.8;">Fees shown are indicative for USD. For other currencies, the same amounts are charged in the respective deposit currency.</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-      <!-- Change Password Tab Content -->
-      <div *ngIf="activeTab === 'password'" class="space-y-6">
-        <div class="card">
-          <h2 class="card-title">Change Password</h2>
-          <p class="text-gray-600">Password change functionality will be implemented here.</p>
-        </div>
-      </div>
+  <div *ngIf="activeTab === 'password'" style="margin-top:16px;">
+    <mat-card>
+      <mat-card-title>Change Password</mat-card-title>
+      <mat-card-content>
+        <p>Password change functionality will be implemented here.</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-      <!-- Settings Tab Content -->
-      <div *ngIf="activeTab === 'settings'" class="space-y-6">
-        <!-- Invoice Logo Card -->
-        <div class="card">
-          <h2 class="card-title">INVOICE LOGO</h2>
-          <div class="logo-upload">
-            <div class="upload-placeholder">
-              <div class="camera-icon">📷</div>
-              <div class="upload-text">Upload photo</div>
-            </div>
-            <div class="upload-info">Allowed *.jpeg, *.jpg, *.png, max size of 5 MB</div>
-            <button class="delete-btn">🗑️</button>
-          </div>
+  <div *ngIf="activeTab === 'settings'" style="display:grid; gap:16px; margin-top:16px;">
+    <mat-card>
+      <mat-card-title>INVOICE LOGO</mat-card-title>
+      <mat-card-content style="display:flex; align-items:center; gap:12px;">
+        <div style="width:80px; height:80px; border:1px dashed rgba(0,0,0,.2); display:flex; align-items:center; justify-content:center;">📷</div>
+        <div style="flex:1;">
+          <div>Upload photo</div>
+          <div style="font-size:12px; opacity:.7;">Allowed *.jpeg, *.jpg, *.png, max size of 5 MB</div>
         </div>
+        <button mat-icon-button aria-label="Delete"><mat-icon>delete</mat-icon></button>
+      </mat-card-content>
+    </mat-card>
 
-        <!-- Activity Card -->
-        <div class="card">
-          <h2 class="card-title">ACTIVITY</h2>
-          <div class="toggle-row">
-            <div class="toggle-container">
-              <input type="checkbox" id="activity-toggle" class="toggle-input" checked>
-              <label for="activity-toggle" class="toggle-label">
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="toggle-text">
-              Receive email for every status update. By default, you'll only receive important updates (Deposit in Virtual Account, Deposit in INR Account, e-FIRS, etc.)
-            </div>
-          </div>
-        </div>
+    <mat-card>
+      <mat-card-title>ACTIVITY</mat-card-title>
+      <mat-card-content style="display:flex; gap:12px; align-items:center;">
+        <mat-slide-toggle checked>Receive email for every status update. By default, you'll only receive important updates (Deposit in Virtual Account, Deposit in INR Account, e-FIRS, etc.)</mat-slide-toggle>
+      </mat-card-content>
+    </mat-card>
 
-        <!-- Invoice Theme Color Card -->
-        <div class="card">
-          <h2 class="card-title">INVOICE THEME COLOR</h2>
-          <div class="color-picker-row">
-            <label class="color-label">Invoice Hex</label>
-            <div class="color-input-group">
-              <div class="color-swatch" [style.background-color]="invoiceColor"></div>
-              <input 
-                type="text" 
-                class="color-input" 
-                [(ngModel)]="invoiceColor" 
-                placeholder="#553dd2">
-              <button class="reset-btn" (click)="resetColor()">↶</button>
-            </div>
-          </div>
-        </div>
+    <mat-card>
+      <mat-card-title>INVOICE THEME COLOR</mat-card-title>
+      <mat-card-content style="display:flex; align-items:center; gap:12px;">
+        <div style="opacity:.7; font-size:12px;">Invoice Hex</div>
+        <div style="width:28px; height:28px; border-radius:4px; border:1px solid rgba(0,0,0,.2);" [style.background-color]="invoiceColor"></div>
+        <mat-form-field appearance="outline" style="width:180px;">
+          <mat-label>Hex value</mat-label>
+          <input matInput [(ngModel)]="invoiceColor" placeholder="#553dd2" />
+        </mat-form-field>
+        <button mat-stroked-button (click)="resetColor()">Reset</button>
+      </mat-card-content>
+    </mat-card>
 
-        <!-- Save Changes Button -->
-        <div class="save-container">
-          <button class="save-btn">Save Changes</button>
-        </div>
-      </div>
+    <div style="text-align:right;">
+      <button mat-raised-button color="primary">Save Changes</button>
     </div>
   </div>
-</div>
-
-<!-- Help Button -->
-<div class="help-button">
-  <button class="help-btn">
-    <span class="help-icon">?</span>
-    <span class="help-text">Help</span>
-  </button>
 </div>

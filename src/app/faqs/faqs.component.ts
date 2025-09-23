@@ -29,8 +29,8 @@ export class FAQsComponent {
   faqs: FAQItem[] = [
     {
       id: '1',
-      question: 'What is SwiftMoney and how does it work?',
-      answer: 'SwiftMoney is a cross-border money transfer platform that enables individuals and businesses to send and receive money internationally. We provide virtual accounts in multiple currencies, allowing you to receive payments from clients worldwide and convert them to Indian Rupees at competitive rates.',
+      question: 'What is Setu and how does it work?',
+      answer: 'Setu is a cross-border money transfer platform that enables individuals and businesses to send and receive money internationally. We provide virtual accounts in multiple currencies, allowing you to receive payments from clients worldwide and convert them to Indian Rupees at competitive rates.',
       category: 'general'
     },
     {
@@ -90,7 +90,7 @@ export class FAQsComponent {
     {
       id: '11',
       question: 'How do I track my international transfer?',
-      answer: 'You can track your transfer status in real-time through your SwiftMoney dashboard. We provide transaction IDs, bank reference numbers, and regular updates via email and SMS.',
+      answer: 'You can track your transfer status in real-time through your Setu dashboard. We provide transaction IDs, bank reference numbers, and regular updates via email and SMS.',
       category: 'transfers'
     },
     {

@@ -1,131 +1,103 @@
-<main class="home-page">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <h1 class="hero-title">Move money globally with <span>SwiftMoney</span></h1>
-        <p class="hero-sub">Open multi-currency virtual accounts, get paid like a local, and settle funds in INR — fast, compliant, and transparent.</p>
-        <div class="hero-ctas">
-          <a routerLink="/signup" class="btn btn-primary">Get Started</a>
-          <a routerLink="/login" class="btn btn-secondary">Sign In</a>
-        </div>
-        <div class="hero-trust">
-          <div class="avatars">
-            <span class="avatar" title="Alex">🧑🏻‍💻</span>
-            <span class="avatar" title="Priya">👩🏽‍💼</span>
-            <span class="avatar" title="Liam">🧑🏼‍🚀</span>
-            <span class="avatar" title="Aya">👩🏻‍🔬</span>
+<main>
+  <mat-card style="margin-bottom:16px;">
+    <mat-card-content>
+      <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:16px; align-items:center;">
+        <div>
+          <h1 class="hero-headline" style="margin:0; font-weight:900; line-height:1.05; font-size:clamp(36px, 5vw, 64px); letter-spacing:-0.5px;">
+            <span class="line1">Made in <span class="tri-shimmer">Bharat</span> 🇮🇳</span>
+            <span class="line2">with love ❤️</span>
+            <span class="line3">For the world</span>
+          </h1>
+          <p style="opacity:.8;">Open multi-currency virtual accounts, get paid like a local, and settle funds in INR — fast, compliant, and transparent.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a mat-raised-button color="primary" routerLink="/signup">Get Started</a>
+            <a mat-stroked-button routerLink="/login">Sign In</a>
           </div>
-          <div class="trust-text">Trusted by freelancers and businesses in 40+ countries</div>
-        </div>
-      </div>
-
-      <div class="hero-art">
-        <div class="card-stack">
-          <div class="card usd">
-            <div class="card-head">
-              <img src="https://flagcdn.com/us.svg" alt="US" class="flag"/>
-              <span>USD Virtual Account</span>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:12px; flex-wrap:wrap;">
+            <div style="display:flex; gap:4px;">
+              <span title="Alex">🧑🏻‍💻</span>
+              <span title="Priya">👩🏽‍💼</span>
+              <span title="Liam">🧑🏼‍🚀</span>
+              <span title="Aya">👩🏻‍🔬</span>
             </div>
-            <div class="card-body">
-              <div class="balance">$12,430.75</div>
-              <div class="meta">Updated a moment ago</div>
-            </div>
+            <div style="font-size:12px; opacity:.8;">Trusted by freelancers and businesses in 40+ countries</div>
           </div>
-          <div class="card eur">
-            <div class="card-head">
-              <img src="https://flagcdn.com/eu.svg" alt="EU" class="flag"/>
-              <span>EUR Virtual Account</span>
-            </div>
-            <div class="card-body">
-              <div class="balance">€3,210.00</div>
-              <div class="meta">Pending €820.00</div>
-            </div>
-          </div>
-          <div class="floating-badge">No hidden fees</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="features">
-    <div class="container">
-      <h2 class="section-title">Why teams choose SwiftMoney</h2>
-      <div class="features-grid">
-        <div class="feature">
-          <div class="icon">🏦</div>
-          <h3>Local account details</h3>
-          <p>Receive like a local in USD, EUR, GBP and more — no sender friction.</p>
-        </div>
-        <div class="feature">
-          <div class="icon">🧾</div>
-          <h3>e-FIRS/Bank docs</h3>
-          <p>Instant e-FIRS and compliant documentation for hassle-free settlements.</p>
-        </div>
-        <div class="feature">
-          <div class="icon">⚡</div>
-          <h3>Fast settlements</h3>
-          <p>Get paid in hours, not weeks. Transparent timelines and tracking.</p>
-        </div>
-        <div class="feature">
-          <div class="icon">🔒</div>
-          <h3>Bank-grade security</h3>
-          <p>Fully encrypted, 2FA-enabled, compliant with RBI & global standards.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="steps">
-    <div class="container">
-      <h2 class="section-title">Start in three steps</h2>
-      <div class="steps-grid">
-        <div class="step">
-          <div class="badge">1</div>
-          <h3>Create your account</h3>
-          <p>Sign up, complete quick KYC, and choose your currencies.</p>
-        </div>
-        <div class="step">
-          <div class="badge">2</div>
-          <h3>Share account details</h3>
-          <p>Send local account details to clients across the US, EU, UK, and more.</p>
-        </div>
-        <div class="step">
-          <div class="badge">3</div>
-          <h3>Receive and settle</h3>
-          <p>Track payments in real-time and settle to INR at great rates.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="testimonial-card">
-        <div class="quote">“SwiftMoney replaced 4 tools for our global invoicing. Clients pay faster and we close books quicker.”</div>
-        <div class="person">
-          <span class="avatar sm">👩🏽‍💼</span>
-          <div>
-            <div class="name">Priya, Founder at CraftHub</div>
-            <div class="role">Mumbai, India</div>
+        <div>
+          <div style="position:relative; max-width:420px; margin:0 auto;">
+            <mat-card style="margin-bottom:8px;">
+              <mat-card-header>
+                <img mat-card-avatar src="https://flagcdn.com/us.svg" alt="US"/>
+                <mat-card-title>USD Virtual Account</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div style="font-size:20px; font-weight:800;">$12,430.75</div>
+                <div style="opacity:.7; font-size:12px;">Updated a moment ago</div>
+              </mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-header>
+                <img mat-card-avatar src="https://flagcdn.com/eu.svg" alt="EU"/>
+                <mat-card-title>EUR Virtual Account</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div style="font-size:20px; font-weight:800;">€3,210.00</div>
+                <div style="opacity:.7; font-size:12px;">Pending €820.00</div>
+              </mat-card-content>
+            </mat-card>
+            <div style="position:absolute; right:-10px; top:-10px; background:#4caf50; color:#fff; font-weight:700; padding:4px 8px; border-radius:6px;">No hidden fees</div>
           </div>
         </div>
       </div>
+    </mat-card-content>
+  </mat-card>
+
+  <section>
+    <h2 style="text-align:center; font-weight:800;">Why teams choose Setu</h2>
+    <div style="display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px;">
+      <mat-card><mat-card-title>🏦 Local account details</mat-card-title><mat-card-content>Receive like a local in USD, EUR, GBP and more — no sender friction.</mat-card-content></mat-card>
+      <mat-card><mat-card-title>🧾 e-FIRS/Bank docs</mat-card-title><mat-card-content>Instant e-FIRS and compliant documentation for hassle-free settlements.</mat-card-content></mat-card>
+      <mat-card><mat-card-title>⚡ Fast settlements</mat-card-title><mat-card-content>Get paid in hours, not weeks. Transparent timelines and tracking.</mat-card-content></mat-card>
+      <mat-card><mat-card-title>🔒 Bank-grade security</mat-card-title><mat-card-content>Fully encrypted, 2FA-enabled, compliant with RBI & global standards.</mat-card-content></mat-card>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container cta-card">
-      <h2 class="cta-title">Open your first virtual account today</h2>
-      <p class="cta-sub">It takes less than 5 minutes to get started.</p>
-      <div>
-        <a routerLink="/signup" class="btn btn-primary">Create Free Account</a>
-        <a routerLink="/faqs" class="btn btn-ghost">Read FAQs</a>
-      </div>
+  <section style="margin-top:16px;">
+    <h2 style="text-align:center; font-weight:800;">Start in three steps</h2>
+    <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;">
+      <mat-card><mat-card-title>1. Create your account</mat-card-title><mat-card-content>Sign up, complete quick KYC, and choose your currencies.</mat-card-content></mat-card>
+      <mat-card><mat-card-title>2. Share account details</mat-card-title><mat-card-content>Send local account details to clients across the US, EU, UK, and more.</mat-card-content></mat-card>
+      <mat-card><mat-card-title>3. Receive and settle</mat-card-title><mat-card-content>Track payments in real-time and settle to INR at great rates.</mat-card-content></mat-card>
     </div>
+  </section>
+
+  <section style="margin-top:16px;">
+    <mat-card>
+      <mat-card-content style="text-align:center;">
+        <div style="max-width:800px; margin:0 auto;">
+          <div style="font-weight:600;">“Setu replaced 4 tools for our global invoicing. Clients pay faster and we close books quicker.”</div>
+          <div style="display:flex; align-items:center; gap:8px; justify-content:center; opacity:.8;">
+            <span>👩🏽‍💼</span>
+            <div>
+              <div style="font-weight:700;">Priya, Founder at CraftHub</div>
+              <div style="font-size:12px;">Mumbai, India</div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section style="margin-top:16px;">
+    <mat-card style="background:linear-gradient(135deg,#7c3aed,#3b82f6); color:#fff; text-align:center;">
+      <mat-card-content>
+        <h2 style="margin:0; font-weight:800;">Open your first virtual account today</h2>
+        <p style="opacity:.95;">It takes less than 5 minutes to get started.</p>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <a mat-raised-button color="accent" routerLink="/signup">Create Free Account</a>
+          <a mat-stroked-button routerLink="/faqs">Read FAQs</a>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </section>
 </main>

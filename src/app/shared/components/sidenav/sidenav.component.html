@@ -1,40 +1,29 @@
-<aside class="sidenav">
-  <div class="brand">
-    <span class="dot"></span>
-  </div>
-
-  <div class="profile">
-    <div class="name" title="{{ userName }}">{{ userName }}</div>
-    <div class="email">{{ userEmail }}</div>
-  </div>
-
-  <div class="section">GENERAL</div>
-  <nav class="menu">
-    <a class="item" routerLink="/dashboard" routerLinkActive="active">
-      <span class="icon">🗂</span>
-      <span>Dashboard</span>
-    </a>
-    <a class="item" routerLink="/requests" routerLinkActive="active">
-      <span class="icon">📄</span>
-      <span>Requests</span>
-    </a>
-    <a class="item" routerLink="/clients">
-      <span class="icon">👥</span>
-      <span>Clients</span>
-    </a>
-    <a class="item" routerLink="/profile" routerLinkActive="active">
-      <span class="icon">👤</span>
-      <span>Profile</span>
-    </a>
-    <a class="item" routerLink="/rewards">
-      <span class="icon">💲</span>
-      <span>Rewards</span>
-    </a>
-    <button class="item" (click)="logout()" type="button">
-      <span class="icon">🚪</span>
-      <span>Logout</span>
-    </button>
-  </nav>
-</aside>
+<mat-nav-list>
+  <div mat-subheader>General</div>
+  <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+    <mat-icon matListItemIcon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </a>
+  <a mat-list-item routerLink="/requests" routerLinkActive="active">
+    <mat-icon matListItemIcon>receipt_long</mat-icon>
+    <span>Requests</span>
+  </a>
+  <a mat-list-item routerLink="/clients">
+    <mat-icon matListItemIcon>group</mat-icon>
+    <span>Clients</span>
+  </a>
+  <a mat-list-item routerLink="/profile" routerLinkActive="active">
+    <mat-icon matListItemIcon>person</mat-icon>
+    <span>Profile</span>
+  </a>
+  <a mat-list-item routerLink="/rewards">
+    <mat-icon matListItemIcon>payments</mat-icon>
+    <span>Rewards</span>
+  </a>
+  <button mat-list-item (click)="logout()" type="button" class="logout-item">
+    <mat-icon matListItemIcon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-nav-list>
 
 

@@ -1,51 +1,63 @@
-<div class="pricing-page">
-  <div class="container">
-    <section class="hero">
-      <h1 class="title">Transparent pricing. Better than the market.</h1>
-      <p class="subtitle">Pay less than traditional providers and get real-time FX with no hidden fees.</p>
-      <div class="value-cards">
-        <div class="value-card">
-          <div class="label">FX Rate</div>
-          <div class="value">{{ fxRate }}</div>
-        </div>
-        <div class="value-card">
-          <div class="label">Transfer Fee</div>
-          <div class="value">{{ transferFee }}</div>
-        </div>
-        <div class="value-card highlight">
-          <div class="label">You save</div>
-          <div class="value">up to 35%</div>
-          <div class="note">vs typical market rates</div>
-        </div>
+<div>
+  <mat-card style="margin-bottom:16px;">
+    <mat-card-header>
+      <mat-card-title>Transparent pricing. Better than the market.</mat-card-title>
+      <mat-card-subtitle>Pay less than traditional providers and get real-time FX with no hidden fees.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;">
+        <mat-card>
+          <mat-card-subtitle>FX Rate</mat-card-subtitle>
+          <mat-card-title>{{ fxRate }}</mat-card-title>
+        </mat-card>
+        <mat-card>
+          <mat-card-subtitle>Transfer Fee</mat-card-subtitle>
+          <mat-card-title>{{ transferFee }}</mat-card-title>
+        </mat-card>
+        <mat-card color="primary">
+          <mat-card-subtitle>You save</mat-card-subtitle>
+          <mat-card-title>up to 35%</mat-card-title>
+          <mat-card-content>vs typical market rates</mat-card-content>
+        </mat-card>
       </div>
-    </section>
+    </mat-card-content>
+  </mat-card>
 
-    <section class="comparison">
-      <h2 class="section-title">How we compare</h2>
-      <div class="table-wrap">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>SwiftMoney</th>
-              <th>Competitor A</th>
-              <th>Competitor B</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let f of features">
-              <td class="feature">{{ f.label }}</td>
-              <td class="us">{{ f.swiftmoney }}</td>
-              <td>{{ f.competitorA }}</td>
-              <td>{{ f.competitorB }}</td>
-            </tr>
-          </tbody>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>How we compare</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div style="overflow:auto;">
+        <table mat-table [dataSource]="features" style="width:100%; min-width:640px;">
+          <ng-container matColumnDef="feature">
+            <th mat-header-cell *matHeaderCellDef>Feature</th>
+            <td mat-cell *matCellDef="let f">{{ f.label }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="us">
+            <th mat-header-cell *matHeaderCellDef>Setu</th>
+            <td mat-cell *matCellDef="let f">{{ f.swiftmoney }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="a">
+            <th mat-header-cell *matHeaderCellDef>Competitor A</th>
+            <td mat-cell *matCellDef="let f">{{ f.competitorA }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="b">
+            <th mat-header-cell *matHeaderCellDef>Competitor B</th>
+            <td mat-cell *matCellDef="let f">{{ f.competitorB }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['feature','us','a','b']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['feature','us','a','b']"></tr>
         </table>
       </div>
-      <div class="cta">
-        <a routerLink="/signup" class="btn btn-primary">Start for Free</a>
-        <a routerLink="/faqs" class="btn btn-ghost">See FAQs</a>
-      </div>
-    </section>
-  </div>
+    </mat-card-content>
+    <mat-card-actions style="display:flex; gap:8px;">
+      <a mat-raised-button color="primary" routerLink="/signup">Start for Free</a>
+      <a mat-stroked-button routerLink="/faqs">See FAQs</a>
+    </mat-card-actions>
+  </mat-card>
 </div>

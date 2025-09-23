@@ -1,13 +1,53 @@
-.sidenav { width: 300px; padding: 24px 20px; border-right: 1px dashed #e5e7eb; }
-.brand { height: 40px; display: flex; align-items: center; }
-.dot { width: 28px; height: 28px; background: #6d28d9; border-radius: 8px; display: inline-block; }
-.profile { background: #f3f4f6; border-radius: 16px; padding: 16px; margin: 16px 0 28px; }
-.name { font-weight: 700; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.email { margin-top: 6px; font-size: 14px; color: #6b7280; }
-.section { font-weight: 700; letter-spacing: .02em; color: #111827; margin-bottom: 12px; }
-.menu { display: flex; flex-direction: column; gap: 8px; }
-.item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; color: #374151; text-decoration: none; background: transparent; border: 0; cursor: pointer; text-align: left; }
-.item:hover { background: #f3f4f6; }
-.item.active { background: #ede9fe; color: #7c3aed; }
-.icon { width: 22px; display: inline-flex; justify-content: center; }
+/* Container + surface */
+:host { display: block; padding: 12px; background: #fafafa; border-right: 1px solid rgba(0,0,0,0.08); }
 
+/* Section label */
+:host ::ng-deep .mdc-list-group__subheader {
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: rgba(0,0,0,.65);
+  padding: 8px 12px;
+}
+
+/* Shape and spacing for list items */
+:host ::ng-deep .mat-mdc-list-item.mdc-list-item { border-radius: 12px; margin: 4px 8px; }
+:host ::ng-deep .mat-mdc-list-item.mdc-list-item .mdc-list-item__content { padding: 8px 10px; }
+
+/* Layout: icon chip + label horizontally with gap */
+:host ::ng-deep .mat-mdc-list-item .mdc-list-item__primary-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Icon chip look */
+:host ::ng-deep .mat-mdc-list-item mat-icon { font-size: 18px; width: 18px; height: 18px; }
+:host ::ng-deep .mat-mdc-list-item .mdc-list-item__start {
+  background: rgba(63,81,181,0.10);
+  color: #3f51b5;
+  padding: 7px;
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+}
+
+/* Active route styling (routerLinkActive="active") */
+a.active.mat-mdc-list-item .mdc-list-item__primary-text { color: #3f51b5; font-weight: 600; }
+a.active.mat-mdc-list-item { background: rgba(63,81,181,0.12); box-shadow: 0 1px 2px rgba(0,0,0,.04) inset; }
+a.active.mat-mdc-list-item .mdc-list-item__start { background: rgba(63,81,181,0.16); }
+
+/* Hover feedback */
+:host ::ng-deep .mat-mdc-list-item.mdc-list-item:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+/* Logout button block style */
+.logout-item.mat-mdc-list-item.mdc-list-item {
+  margin-top: 8px;
+  border: 1px solid rgba(0,0,0,0.14);
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}

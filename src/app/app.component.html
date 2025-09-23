@@ -1,4 +1,12 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-
-<footer class="bg-white border-t p-6 text-sm text-gray-600">© SwiftMoney — demo</footer>
+<mat-sidenav-container style="min-height:100vh;">
+  <mat-sidenav mode="side" opened style="width:260px;">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <div style="padding:16px;">
+      <router-outlet></router-outlet>
+    </div>
+    <footer style="padding:16px; font-size:12px; color:rgba(0,0,0,.6);">© Setu — demo</footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

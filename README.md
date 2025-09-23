@@ -1,4 +1,4 @@
-# SwiftMoney — Angular Starter Repo
+# Setu — Angular Starter Repo
 
 This repository is a **git-ready starter** for an Angular app that combines the best features of Mulya and Skydo. It contains a minimal but runnable Angular project skeleton with Tailwind support and the core components (Header, Hero, Calculator) plus a mocked PricingService.
 
