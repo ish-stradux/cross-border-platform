@@ -12,8 +12,26 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
 .hero-sub { font-size: 1.125rem; color: #4b5563; margin: 0 0 1.5rem; }
 .hero-ctas { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .9rem 1.25rem; border-radius: .75rem; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid #e5e7eb; }
-.btn-primary { background: #7c3aed; color: #fff; border-color: #7c3aed; }
-.btn-primary:hover { background: #6d28d9; }
+.btn-primary { background: #f97316; color: #fff; border-color: #f97316; }
+.btn-primary:hover { background: #ea580c; }
+.btn-secondary { border-color: #f97316; color: #ea580c; }
+
+/* Force Angular Material buttons to be orange */
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-unelevated-button.mat-primary,
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary,
+.mat-mdc-outlined-button.mat-primary {
+  --mdc-protected-button-container-color: #f97316;
+  --mdc-filled-button-container-color: #f97316;
+  --mdc-fab-container-color: #f97316;
+  --mdc-outlined-button-outline-color: #f97316;
+  color: #fff;
+}
+
+.mat-mdc-outlined-button.mat-primary {
+  color: #ea580c;
+}
 .btn-secondary { background: #fff; color: #374151; }
 .btn-ghost { background: transparent; color: #374151; }
 
@@ -54,7 +72,7 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
 .role { font-size: .875rem; }
 
 .cta { padding: 3rem 0; }
-.cta-card { background: linear-gradient(135deg, #7c3aed, #3b82f6); border-radius: 1rem; padding: 2rem; color: #fff; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+.cta-card { background: linear-gradient(135deg, #0d47a1, #00bcd4); border-radius: 1rem; padding: 2rem; color: #fff; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
 .cta-title { font-size: 2rem; font-weight: 800; margin: 0 0 .25rem; }
 .cta-sub { margin: 0 0 1rem; opacity: .95; }
 

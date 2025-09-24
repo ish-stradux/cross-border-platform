@@ -11,6 +11,7 @@
 
 /* Shape and spacing for list items */
 :host ::ng-deep .mat-mdc-list-item.mdc-list-item { border-radius: 12px; margin: 4px 8px; }
+
 :host ::ng-deep .mat-mdc-list-item.mdc-list-item .mdc-list-item__content { padding: 8px 10px; }
 
 /* Layout: icon chip + label horizontally with gap */

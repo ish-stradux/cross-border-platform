@@ -1,89 +1,87 @@
-<div>
-  <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:16px;">
+<div class="container">
+  <div class="page-head">
     <div>
-      <h1 style="margin:0;">Dashboard</h1>
-      <div style="opacity:.7;">Overview • Accounts</div>
+      <div class="page-title">Dashboard</div>
+      <div class="page-sub">Overview • Accounts</div>
     </div>
-    <div>
-      <button mat-raised-button color="primary" (click)="generatePaymentLink()">Create Payment Link</button>
-      <button mat-stroked-button>Add Currency</button>
+    <div class="head-actions">
+      <button class="btn btn-primary" (click)="generatePaymentLink()">Create Payment Link</button>
+      <button class="btn">Add Currency</button>
     </div>
   </div>
 
-  <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px; margin-bottom:16px;">
-    <mat-card>
-      <mat-card-subtitle>Total Balance</mat-card-subtitle>
-      <mat-card-title>${{ totalBalanceUsd | number:'1.2-2' }}</mat-card-title>
-      <mat-card-content>Across all virtual accounts</mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-subtitle>Pending</mat-card-subtitle>
-      <mat-card-title>${{ pendingUsd | number:'1.2-2' }}</mat-card-title>
-      <mat-card-content>Awaiting settlement</mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-subtitle>Last Deposit</mat-card-subtitle>
-      <mat-card-title>${{ lastDepositUsd | number:'1.2-2' }}</mat-card-title>
-      <mat-card-content>2 days ago</mat-card-content>
-    </mat-card>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Balance</div>
+      <div class="stat-value">${{ totalBalanceUsd | number:'1.2-2' }}</div>
+      <div class="stat-foot">Across all virtual accounts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Pending</div>
+      <div class="stat-value">${{ pendingUsd | number:'1.2-2' }}</div>
+      <div class="stat-foot warn">Awaiting settlement</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Last Deposit</div>
+      <div class="stat-value">${{ lastDepositUsd | number:'1.2-2' }}</div>
+      <div class="stat-foot">2 days ago</div>
+    </div>
   </div>
 
-  <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:16px;">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Recent Activity</mat-card-title>
-        <mat-card-actions>
-          <button mat-button (click)="openActivityModal()">View all</button>
-        </mat-card-actions>
-      </mat-card-header>
-      <mat-card-content>
-        <div *ngFor="let t of transactions" style="display:flex; align-items:flex-start; gap:12px; padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06);">
-          <div style="width:24px;">{{ t.type === 'deposit' ? '⬇' : t.type === 'payment' ? '💵' : t.type === 'refund' ? '↩' : '⚙' }}</div>
-          <div style="flex:1;">
-            <div style="display:flex; justify-content:space-between;">
-              <div>{{ t.description }}</div>
-              <div>{{ t.currency }} {{ t.amount | number:'1.2-2' }}</div>
+  <div class="main-grid">
+    <div class="panel">
+      <div class="panel-head">
+        <div class="panel-title">Recent Activity</div>
+        <button class="link" (click)="openActivityModal()">View all</button>
+      </div>
+      <div class="activity">
+        <div class="activity-item" *ngFor="let t of transactions">
+          <div class="activity-icon" [ngClass]="t.type">
+            {{ t.type === 'deposit' ? '↓' : t.type === 'payment' ? '$' : t.type === 'refund' ? '↩' : '⚙' }}
+          </div>
+          <div class="activity-info">
+            <div class="row-top">
+              <div class="desc">{{ t.description }}</div>
+              <div class="amount" [ngClass]="t.type">{{ t.currency }} {{ t.amount | number:'1.2-2' }}</div>
             </div>
-            <div style="opacity:.7; font-size:12px; display:flex; gap:12px;">
+            <div class="row-sub">
               <span>{{ t.timestamp }}</span>
-              <span>{{ t.status }}</span>
+              <span class="status" [ngClass]="t.status">{{ t.status }}</span>
             </div>
           </div>
         </div>
-      </mat-card-content>
-    </mat-card>
+      </div>
+    </div>
 
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>USD Account Details</mat-card-title>
-        <img src="https://flagcdn.com/us.svg" alt="US" style="width:24px; height:auto; margin-left:auto;" />
-      </mat-card-header>
-      <mat-card-content>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
-          <div>
-            <div style="opacity:.7; font-size:12px;">Account Name</div>
-            <div>{{ account.accountName }}</div>
-            <button mat-stroked-button (click)="copy(account.accountName, 'name')">{{ copiedField === 'name' ? 'Copied' : 'Copy' }}</button>
-          </div>
-          <div>
-            <div style="opacity:.7; font-size:12px;">Account Number</div>
-            <div style="font-family:monospace;">{{ account.accountNumber }}</div>
-            <button mat-stroked-button (click)="copy(account.accountNumber, 'number')">{{ copiedField === 'number' ? 'Copied' : 'Copy' }}</button>
-          </div>
-          <div>
-            <div style="opacity:.7; font-size:12px;">Routing Number</div>
-            <div style="font-family:monospace;">{{ account.routingNumber }}</div>
-            <button mat-stroked-button (click)="copy(account.routingNumber, 'routing')">{{ copiedField === 'routing' ? 'Copied' : 'Copy' }}</button>
-          </div>
-          <div>
-            <div style="opacity:.7; font-size:12px;">IBAN</div>
-            <div style="font-family:monospace;">{{ account.iban }}</div>
-            <button mat-stroked-button (click)="copy(account.iban, 'iban')">{{ copiedField === 'iban' ? 'Copied' : 'Copy' }}</button>
-          </div>
+    <div class="panel">
+      <div class="panel-head">
+        <div class="panel-title">USD Account Details</div>
+        <img class="flag" src="https://flagcdn.com/us.svg" alt="US" />
+      </div>
+      <div class="account-grid">
+        <div class="field">
+          <div class="label">Account Name</div>
+          <div class="value">{{ account.accountName }}</div>
+          <button class="copy" (click)="copy(account.accountName, 'name')">{{ copiedField === 'name' ? 'Copied' : 'Copy' }}</button>
         </div>
-        <div style="margin-top:8px; opacity:.8;">Share these details with payers to receive money directly to your USD virtual account.</div>
-      </mat-card-content>
-    </mat-card>
+        <div class="field">
+          <div class="label">Account Number</div>
+          <div class="value mono">{{ account.accountNumber }}</div>
+          <button class="copy" (click)="copy(account.accountNumber, 'number')">{{ copiedField === 'number' ? 'Copied' : 'Copy' }}</button>
+        </div>
+        <div class="field">
+          <div class="label">Routing Number</div>
+          <div class="value mono">{{ account.routingNumber }}</div>
+          <button class="copy" (click)="copy(account.routingNumber, 'routing')">{{ copiedField === 'routing' ? 'Copied' : 'Copy' }}</button>
+        </div>
+        <div class="field">
+          <div class="label">IBAN</div>
+          <div class="value mono">{{ account.iban }}</div>
+          <button class="copy" (click)="copy(account.iban, 'iban')">{{ copiedField === 'iban' ? 'Copied' : 'Copy' }}</button>
+        </div>
+      </div>
+      <div class="help">Share these details with payers to receive money directly to your USD virtual account.</div>
+    </div>
   </div>
 </div>
 
@@ -93,5 +91,3 @@
   [isOpen]="isActivityModalOpen"
   (close)="closeActivityModal()">
 </app-activity-modal>
-
-
