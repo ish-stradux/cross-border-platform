@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -56,7 +57,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HeroComponent, CalculatorComponent, SidenavComponent, ActivityModalComponent, HomeComponent, LoginComponent, SignupComponent, DashboardComponent, ProfileComponent, RequestsComponent, FAQsComponent, IntegrationsComponent, PricingComponent],
   imports: [BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes), MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatCardModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatTableModule, MatExpansionModule, MatButtonToggleModule, MatSlideToggleModule],
-  providers: [PricingService],
+  providers: [PricingService, DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
