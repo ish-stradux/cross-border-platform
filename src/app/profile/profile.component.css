@@ -98,8 +98,8 @@
 }
 
 .tab-button.active {
-  color: #7c3aed;
-  border-bottom-color: #7c3aed;
+  color: #ed823b;
+  border-bottom-color: #ed823b;
 }
 
 .icon {
@@ -145,7 +145,7 @@
 }
 
 .change-btn {
-  background: #7c3aed;
+  background: #ed823b;
   color: white;
   border: none;
   border-radius: 0.375rem;
@@ -179,7 +179,7 @@
 }
 
 .help-btn {
-  background: #7c3aed;
+  background: #ed823b;
   color: white;
   border: none;
   border-radius: 0.75rem;
@@ -230,7 +230,7 @@
 }
 
 .upload-placeholder:hover {
-  border-color: #7c3aed;
+  border-color: #ed823b;
   background: #f3f4f6;
 }
 
@@ -290,7 +290,7 @@
 }
 
 .toggle-input:checked + .toggle-label {
-  background: #7c3aed;
+  background: #ed823b;
 }
 
 .toggle-slider {
@@ -353,7 +353,7 @@
 
 .color-input:focus {
   outline: none;
-  border-color: #7c3aed;
+  border-color: #ed823b;
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
 }
 
@@ -369,7 +369,7 @@
 }
 
 .reset-btn:hover {
-  color: #7c3aed;
+  color: #ed823b;
   background: #f3f4f6;
 }
 
@@ -380,7 +380,7 @@
 }
 
 .save-btn {
-  background: #7c3aed;
+  background: #ed823b;
   color: white;
   border: none;
   border-radius: 0.5rem;

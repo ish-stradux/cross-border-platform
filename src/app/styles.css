@@ -5,11 +5,11 @@
 .hero { padding: 4rem 0 2rem; background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%); }
 .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; }
 .hero-title { font-size: 3rem; line-height: 1.1; font-weight: 800; color: #111827; margin: 0 0 1rem; }
-.hero-title span { background: linear-gradient(135deg, #7c3aed, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-title span { background: linear-gradient(135deg, #ed823b, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-sub { font-size: 1.125rem; color: #4b5563; margin: 0 0 1.5rem; }
 .hero-ctas { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .9rem 1.25rem; border-radius: .75rem; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid #e5e7eb; }
-.btn-primary { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+.btn-primary { background: #ed823b; color: #fff; border-color: #ed823b; }
 .btn-primary:hover { background: #6d28d9; }
 .btn-secondary { background: #fff; color: #374151; }
 .btn-ghost { background: transparent; color: #374151; }
@@ -41,7 +41,7 @@
 .steps { padding: 3rem 0; background: #fff; }
 .steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
 .step { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.25rem; height: 100%; }
-.badge { width: 28px; height: 28px; background: #7c3aed; color: #fff; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: .5rem; }
+.badge { width: 28px; height: 28px; background: #ed823b; color: #fff; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: .5rem; }
 
 .testimonials { padding: 3rem 0; }
 .testimonial-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
@@ -51,7 +51,7 @@
 .role { font-size: .875rem; }
 
 .cta { padding: 3rem 0; }
-.cta-card { background: linear-gradient(135deg, #7c3aed, #3b82f6); border-radius: 1rem; padding: 2rem; color: #fff; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+.cta-card { background: linear-gradient(135deg, #ed823b, #3b82f6); border-radius: 1rem; padding: 2rem; color: #fff; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
 .cta-title { font-size: 2rem; font-weight: 800; margin: 0 0 .25rem; }
 .cta-sub { margin: 0 0 1rem; opacity: .95; }
 

@@ -21,7 +21,7 @@
   font-weight: 800;
   color: #111827;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  background: linear-gradient(135deg, #ed823b, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -66,7 +66,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #7c3aed;
+  border-color: #ed823b;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
 }
@@ -110,8 +110,8 @@
 }
 
 .filter-tab.active {
-  background: #7c3aed;
-  border-color: #7c3aed;
+  background: #ed823b;
+  border-color: #ed823b;
   color: #fff;
 }
 
@@ -234,7 +234,7 @@
 }
 
 .contact-card {
-  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  background: linear-gradient(135deg, #ed823b, #3b82f6);
   border-radius: 1rem;
   padding: 3rem;
   text-align: center;
@@ -281,7 +281,7 @@
 
 .btn-primary {
   background: #fff;
-  color: #7c3aed;
+  color: #ed823b;
 }
 
 .btn-primary:hover {
