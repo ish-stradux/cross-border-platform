@@ -30,6 +30,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -56,7 +59,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HeroComponent, CalculatorComponent, SidenavComponent, ActivityModalComponent, HomeComponent, LoginComponent, SignupComponent, DashboardComponent, ProfileComponent, RequestsComponent, FAQsComponent, IntegrationsComponent, PricingComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes), MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatCardModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatTableModule, MatExpansionModule, MatButtonToggleModule, MatSlideToggleModule],
+  imports: [BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes), MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatCardModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, MatTableModule, MatExpansionModule, MatButtonToggleModule, MatSlideToggleModule, MatMenuModule, MatDividerModule, MatRippleModule],
   providers: [PricingService, DecimalPipe],
   bootstrap: [AppComponent]
 })

@@ -1,31 +1,33 @@
-<div>
-  <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:16px;">
-    <div>
-      <h1 style="margin:0;">Integrations</h1>
-      <div style="opacity:.8;">Connect your favorite freelancing platforms to automate invoicing and payments.</div>
+<div class="integrations-page">
+  <div class="container">
+    <div class="page-head">
+      <div>
+        <h1 class="title">Integrations</h1>
+        <div class="subtitle">Connect your favorite freelancing platforms to automate invoicing and payments.</div>
+      </div>
+      <div class="search-box">
+        <mat-icon class="icon">search</mat-icon>
+        <input class="search-input" placeholder="Search platforms..." [(ngModel)]="search" />
+      </div>
     </div>
-    <mat-form-field appearance="outline" style="min-width:280px;">
-      <mat-label>Search platforms</mat-label>
-      <input matInput placeholder="Search platforms..." [(ngModel)]="search" />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-  </div>
 
-  <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;">
-    <mat-card *ngFor="let p of filteredPlatforms">
-      <mat-card-content>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <img [src]="p.logo" [alt]="p.name" style="width:40px; height:40px; object-fit:contain;"/>
-          <div style="font-weight:600;">{{ p.name }}</div>
-          <span style="margin-left:auto; background:rgba(0,0,0,.06); padding:2px 8px; border-radius:999px; font-size:12px; display:inline-flex; align-items:center; gap:6px;">👷‍♂️ Coming soon</span>
+    <div class="grid">
+      <div class="card" *ngFor="let p of filteredPlatforms">
+        <span class="soon-chip">
+          <span class="soon-avatar">🏗️</span>
+          <span class="soon-text">Coming soon</span>
+        </span>
+        <div class="card-head">
+          <img class="logo" [src]="p.logo" [alt]="p.name"/>
+          <div class="name">{{ p.name }}</div>
         </div>
-        <p style="margin:8px 0 0; opacity:.85;">{{ p.description }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-stroked-button disabled>Connect</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+        <div class="desc">{{ p.description }}</div>
+        <div class="actions">
+          <button class="btn" disabled>Connect</button>
+        </div>
+      </div>
+    </div>
 
-  <div style="margin-top:16px; opacity:.85;">Looking for another integration? <a routerLink="/faqs">Tell us</a> what to add next.</div>
+    <div class="help">Looking for another integration? <a routerLink="/faqs">Tell us</a> what to add next.</div>
+  </div>
 </div>

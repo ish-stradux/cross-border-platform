@@ -157,7 +157,7 @@
 }
 
 .change-btn:hover {
-  background: #6d28d9;
+  background: #ea580c;
 }
 
 .disclaimer {
@@ -193,7 +193,7 @@
 }
 
 .help-btn:hover {
-  background: #6d28d9;
+  background: #ea580c;
   transform: translateY(-1px);
 }
 
@@ -392,5 +392,5 @@
 }
 
 .save-btn:hover {
-  background: #6d28d9;
+  background: #ea580c;
 }

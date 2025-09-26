@@ -1,7 +1,7 @@
-<div>
-  <div style="margin-bottom:16px;">
-    <h1 style="margin:0;">Account</h1>
-    <div style="opacity:.7;">Dashboard • Profile • Account Settings</div>
+<div class="content px-6 py-10">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">Account</h1>
+    <div class="text-sm text-gray-500 mt-2">Dashboard • Profile • Account Settings</div>
   </div>
 
   <mat-button-toggle-group [value]="activeTab" (change)="setActiveTab($event.value)">
@@ -10,22 +10,25 @@
     <mat-button-toggle value="settings">⚙️ Settings</mat-button-toggle>
   </mat-button-toggle-group>
 
-  <div *ngIf="activeTab === 'general'" style="display:grid; gap:16px; margin-top:16px;">
-    <mat-card>
-      <mat-card-title>{{ user.name }}</mat-card-title>
-      <mat-card-content>
-        <div style="display:grid; grid-template-columns: 1fr auto; gap:8px; align-items:center;">
-          <div>Email:</div>
-          <div style="font-weight:600;">{{ user.email }}</div>
-          <button mat-stroked-button color="primary">Change</button>
-          <div>Phone:</div>
-          <div style="font-weight:600;">{{ user.phone }}</div>
-          <button mat-stroked-button color="primary">Change</button>
-          <div *ngIf="user.referredBy">Referred By:</div>
-          <div *ngIf="user.referredBy" style="font-weight:600;">{{ user.referredBy }}</div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+  <div *ngIf="activeTab === 'general'" class="space-y-6 mt-2 max-w-4xl mx-auto">
+    <div class="card">
+      <div class="card-title">{{ user.name }}</div>
+      <div class="info-row">
+        <div class="label">Email</div>
+        <div class="value">{{ user.email }}</div>
+        <button class="change-btn">Change</button>
+      </div>
+      <div class="info-row">
+        <div class="label">Phone</div>
+        <div class="value">{{ user.phone }}</div>
+        <button class="change-btn">Change</button>
+      </div>
+      <div class="info-row" *ngIf="user.referredBy">
+        <div class="label">Referred By</div>
+        <div class="value">{{ user.referredBy }}</div>
+      </div>
+      <div class="disclaimer">Fees shown are indicative for USD. For other currencies, the same amounts are charged in the respective deposit currency.</div>
+    </div>
 
     <mat-card>
       <mat-card-title>{{ bankInr.currency }} Bank Details</mat-card-title>
@@ -48,50 +51,51 @@
     </mat-card>
   </div>
 
-  <div *ngIf="activeTab === 'password'" style="margin-top:16px;">
-    <mat-card>
-      <mat-card-title>Change Password</mat-card-title>
-      <mat-card-content>
-        <p>Password change functionality will be implemented here.</p>
-      </mat-card-content>
-    </mat-card>
+  <div *ngIf="activeTab === 'password'" class="max-w-4xl mx-auto mt-2">
+    <div class="card">
+      <div class="card-title">Change Password</div>
+      <p class="text-gray-600">Password change functionality will be implemented here.</p>
+    </div>
   </div>
 
-  <div *ngIf="activeTab === 'settings'" style="display:grid; gap:16px; margin-top:16px;">
-    <mat-card>
-      <mat-card-title>INVOICE LOGO</mat-card-title>
-      <mat-card-content style="display:flex; align-items:center; gap:12px;">
-        <div style="width:80px; height:80px; border:1px dashed rgba(0,0,0,.2); display:flex; align-items:center; justify-content:center;">📷</div>
-        <div style="flex:1;">
-          <div>Upload photo</div>
-          <div style="font-size:12px; opacity:.7;">Allowed *.jpeg, *.jpg, *.png, max size of 5 MB</div>
+  <div *ngIf="activeTab === 'settings'" class="space-y-6 mt-2 max-w-4xl mx-auto">
+    <div class="card">
+      <div class="card-title">INVOICE LOGO</div>
+      <div class="logo-upload">
+        <div class="upload-placeholder">
+          <span class="camera-icon">📷</span>
+          <span class="upload-text">Upload photo</span>
+          <span class="upload-info">Allowed *.jpeg, *.jpg, *.png, max size of 5 MB</span>
         </div>
-        <button mat-icon-button aria-label="Delete"><mat-icon>delete</mat-icon></button>
-      </mat-card-content>
-    </mat-card>
+        <button class="delete-btn" aria-label="Delete">✕</button>
+      </div>
+    </div>
 
-    <mat-card>
-      <mat-card-title>ACTIVITY</mat-card-title>
-      <mat-card-content style="display:flex; gap:12px; align-items:center;">
-        <mat-slide-toggle checked>Receive email for every status update. By default, you'll only receive important updates (Deposit in Virtual Account, Deposit in INR Account, e-FIRS, etc.)</mat-slide-toggle>
-      </mat-card-content>
-    </mat-card>
+    <div class="card">
+      <div class="card-title">ACTIVITY</div>
+      <div class="toggle-row">
+        <div class="toggle-container">
+          <input id="activityToggle" type="checkbox" class="toggle-input" checked />
+          <label for="activityToggle" class="toggle-label"><span class="toggle-slider"></span></label>
+        </div>
+        <div class="toggle-text">Receive email for every status update. By default, you'll only receive important updates (Deposit in Virtual Account, Deposit in INR Account, e-FIRS, etc.)</div>
+      </div>
+    </div>
 
-    <mat-card>
-      <mat-card-title>INVOICE THEME COLOR</mat-card-title>
-      <mat-card-content style="display:flex; align-items:center; gap:12px;">
-        <div style="opacity:.7; font-size:12px;">Invoice Hex</div>
-        <div style="width:28px; height:28px; border-radius:4px; border:1px solid rgba(0,0,0,.2);" [style.background-color]="invoiceColor"></div>
-        <mat-form-field appearance="outline" style="width:180px;">
-          <mat-label>Hex value</mat-label>
-          <input matInput [(ngModel)]="invoiceColor" placeholder="#553dd2" />
-        </mat-form-field>
-        <button mat-stroked-button (click)="resetColor()">Reset</button>
-      </mat-card-content>
-    </mat-card>
+    <div class="card">
+      <div class="card-title">INVOICE THEME COLOR</div>
+      <div class="color-picker-row">
+        <div class="color-label">Invoice Hex</div>
+        <div class="color-input-group">
+          <div class="color-swatch" [style.background-color]="invoiceColor"></div>
+          <input class="color-input" [(ngModel)]="invoiceColor" placeholder="#553dd2" />
+          <button class="reset-btn" (click)="resetColor()">↺</button>
+        </div>
+      </div>
+    </div>
 
-    <div style="text-align:right;">
-      <button mat-raised-button color="primary">Save Changes</button>
+    <div class="save-container">
+      <button class="save-btn">Save Changes</button>
     </div>
   </div>
 </div>

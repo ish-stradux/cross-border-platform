@@ -1,44 +1,62 @@
-<div>
-  <div style="margin-bottom:16px;">
-    <h1 style="margin:0;">Frequently Asked Questions</h1>
-    <div style="opacity:.8;">Find answers to common questions about cross-border money transfers and Indian regulations</div>
-  </div>
+<div class="faqs-page">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Frequently Asked Questions</h1>
+      <p class="page-subtitle">Find answers to common questions about cross-border money transfers and Indian regulations</p>
+    </div>
 
-  <div style="display:flex; gap:16px; align-items:flex-end; flex-wrap:wrap; margin-bottom:16px;">
-    <mat-form-field appearance="outline" style="min-width:280px;">
-      <mat-label>Search FAQs</mat-label>
-      <input matInput placeholder="Search FAQs..." [(ngModel)]="searchTerm" (input)="onSearchChange($event.target.value)" />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-
-    <mat-button-toggle-group [value]="selectedCategory" (change)="onCategoryChange($event.value)">
-      <mat-button-toggle *ngFor="let category of categories" [value]="category.value">{{ category.label }}</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let faq of filteredFAQs; let i = index">
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{ faq.question }}</mat-panel-title>
-        <mat-panel-description>{{ getCategoryLabel(faq.category) }}</mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>{{ faq.answer }}</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-  <div *ngIf="filteredFAQs.length === 0" style="padding:16px; opacity:.8;">No FAQs found. Try adjusting your search or filter criteria.</div>
-
-  <mat-card style="margin-top:16px;">
-    <mat-card-content style="display:flex; align-items:center; gap:12px;">
-      <div>💬</div>
-      <div style="flex:1;">
-        <h3 style="margin:0;">Still have questions?</h3>
-        <p style="margin:0; opacity:.85;">Our support team is here to help you with any questions about cross-border transfers and compliance.</p>
+    <div class="search-filter-section">
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input class="search-input" placeholder="Search FAQs..." [(ngModel)]="searchTerm" (input)="onSearchChange($event.target.value)" />
+        </div>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button mat-raised-button color="primary">Contact Support</button>
-        <button mat-stroked-button>Live Chat</button>
+      <div class="filter-container">
+        <div class="filter-tabs">
+          <button class="filter-tab" [class.active]="selectedCategory === category.value" *ngFor="let category of categories" (click)="onCategoryChange(category.value)">{{ category.label }}</button>
+        </div>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+
+    <div class="faqs-container">
+      <div class="faqs-list">
+        <div class="faq-item" *ngFor="let faq of filteredFAQs; let i = index">
+          <div class="faq-question">
+            <h3 class="question-text">{{ faq.question }}</h3>
+            <span class="category-badge" [ngClass]="{
+              'category-general': faq.category === 'general',
+              'category-transfers': faq.category === 'transfers',
+              'category-compliance': faq.category === 'compliance',
+              'category-fees': faq.category === 'fees',
+              'category-security': faq.category === 'security'
+            }">{{ getCategoryLabel(faq.category) }}</span>
+          </div>
+          <div class="faq-answer">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="filteredFAQs.length === 0">
+      <div class="empty-icon">🤔</div>
+      <div class="empty-text">No FAQs found</div>
+      <div class="empty-subtext">Try adjusting your search or filter criteria.</div>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <div class="contact-content">
+          <h3>Still have questions?</h3>
+          <p>Our support team is here to help you with any questions about cross-border transfers and compliance.</p>
+        </div>
+        <div class="contact-actions">
+          <button class="btn btn-primary">Contact Support</button>
+          <button class="btn btn-secondary">Live Chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

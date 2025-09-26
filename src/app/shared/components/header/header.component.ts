@@ -1,12 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
+import { MOCK_USER } from '../../../core/mocks/mock-data';
 
-@Component({ selector: 'app-header', templateUrl: './header.component.html', standalone: false })
+@Component({ selector: 'app-header', templateUrl: './header.component.html', styleUrls: ['header.component.css'], standalone: false })
 export class HeaderComponent implements OnInit, OnDestroy {
   isOpen = false;
   animate = false;
   private animationInterval: any;
   isLoggedIn = false;
+  userName: string = MOCK_USER.name;
+  userEmail: string = MOCK_USER.email;
 
   constructor(private auth: AuthService) {}
 
@@ -33,5 +36,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.animationInterval = setInterval(() => {
       this.animate = !this.animate;
     }, 2500);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

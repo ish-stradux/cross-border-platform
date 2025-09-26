@@ -1,13 +1,13 @@
 <app-header></app-header>
 
 <mat-sidenav-container style="height:calc(100vh - 64px); margin-top:64px;">
-  <mat-sidenav mode="side" opened style="width:260px;">
-    <app-sidenav></app-sidenav>
+  <mat-sidenav mode="side" [opened]="(isLoggedIn$ | async) ?? false" style="width:260px;">
+    <app-sidenav *ngIf="(isLoggedIn$ | async) ?? false"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <div style="padding:16px;">
       <router-outlet></router-outlet>
     </div>
-    <footer style="padding:16px; font-size:12px; color:rgba(0,0,0,.6);">© SambandhSetu — demo</footer>
+    <footer style="padding:16px; font-size:12px; color:rgba(0,0,0,.6);">© Setu.club</footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

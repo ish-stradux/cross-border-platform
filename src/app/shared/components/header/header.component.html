@@ -1,28 +1,52 @@
-<mat-toolbar color="primary" style="position:fixed; top:0; left:0; right:0; z-index:1000; justify-content:center;">
-  <a routerLink="/" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
-    <div style="height:48px; width:48px; border-radius:50%; background:linear-gradient(135deg,#ab3939,#aa2424,#d8af1b); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px;">
-      <span>Setu</span>
+<mat-toolbar color="primary" class="app-toolbar">
+  <div class="toolbar-inner">
+    <a routerLink="/" class="brand" aria-label="Setu Home">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 110" width="540" height="110" role="img" aria-labelledby="title desc">
+        <title id="title">SETU logo — Built in Bharat</title>
+        <desc id="desc">SETU text logo with S in orange, E in blue, TU in green, and tagline "BUILT IN BHARAT" below.</desc>
+        <style>
+          .logo-word { font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif; font-weight: 800; font-size: 64px; dominant-baseline: hanging; }
+          .tag { font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; dominant-baseline: hanging; }
+        </style>
+        <g id="word" transform="translate(10,6)">
+          <text class="logo-word" x="0"    y="0" fill="#FF6A00">S</text>
+          <text class="logo-word" x="76"   y="0" fill="#0073E6">E</text>
+          <text class="logo-word" x="148"  y="0" fill="#00A859">T</text>
+          <text class="logo-word" x="208"  y="0" fill="#00A859">U</text>
+        </g>
+        <text class="tag" x="50%" y="80" fill="#333333" text-anchor="middle">BUILT IN BHARAT</text>
+      </svg>
+    </a>
+
+    <nav class="nav-links">
+      <a mat-button routerLink="/pricing">Pricing</a>
+      <a mat-button routerLink="/integrations">Integrations</a>
+      <a mat-button routerLink="/faqs">FAQs</a>
+    </nav>
+
+    <div class="actions">
+      <a mat-stroked-button color="accent" *ngIf="!isLoggedIn" routerLink="/login">Login</a>
+      <a mat-flat-button color="primary" *ngIf="!isLoggedIn" routerLink="/signup">Get Started</a>
+
+      <button *ngIf="isLoggedIn" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu" class="user-menu">
+        <div class="user-card" matRipple>
+          <div class="avatar">{{ userName.charAt(0) }}</div>
+          <div class="user-meta">
+            <div class="name">{{ userName }}</div>
+            <div class="email">{{ userEmail }}</div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </div>
-    <span style="font-weight:800; font-size:20px; display:flex; align-items:center; gap:6px;">
-      Setu
-      <span style="display:inline-block; width:16px; overflow:hidden; position:relative; height:16px;">
-        <span style="position:absolute; left:0; top:0; transition:transform .7s, opacity .7s;" [style.opacity]="animate ? 0 : 1" [style.transform]="animate ? 'translateY(8px)' : 'translateY(0)'">$</span>
-        <span style="position:absolute; left:0; top:0; transition:transform .7s, opacity .7s;" [style.opacity]="animate ? 1 : 0" [style.transform]="animate ? 'translateY(0)' : 'translateY(-8px)'">₹</span>
-      </span>
-    </span>
-  </a>
-
-  <nav>
-    <a mat-button *ngIf="!isLoggedIn" routerLink="/pricing">Pricing</a>
-    <a mat-button *ngIf="!isLoggedIn" routerLink="/integrations">Integrations</a>
-    <a mat-button *ngIf="!isLoggedIn" routerLink="/faqs">FAQs</a>
-  </nav>
-
-  <ng-container>
-    <a mat-stroked-button color="accent" *ngIf="!isLoggedIn" routerLink="/login">Login</a>
-    <a class="btn btn-primary" *ngIf="!isLoggedIn" routerLink="/signup">Get Started</a>
-   
-  </ng-container>
+  </div>
 </mat-toolbar>
 
-<div *ngIf="isOpen" style="display:none"></div>
+<div *ngIf="isOpen" class="sr-only"></div>
