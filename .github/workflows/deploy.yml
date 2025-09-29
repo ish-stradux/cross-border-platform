@@ -3,7 +3,10 @@ name: Deploy Angular app (OIDC)
 on:
   workflow_dispatch:
   # push:
-  #   branches: [ main ]
+  #   branches:
+  #     - main
+  #     - dev
+  #     - staging
 
 jobs:
   deploy:
@@ -27,18 +30,23 @@ jobs:
       - name: Clean and build Angular
         run: |
           rm -rf dist
-          npm run build
+          # Enable output hashing for cache busting
+          npm run build -- --output-hashing=all
+
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::544893999043:role/GitHub-Action-Role
           aws-region: ap-south-1
 
-      - name: Upload to S3
-        run: aws s3 cp dist/stradux/ s3://cross-border-platform/ --recursive
-
-      # - name: Invalidate CloudFront cache
-      #   run: |
-      #     aws cloudfront create-invalidation \
-      #       --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-      #       --paths "/*"
+      - name: Upload to S3 with cache-control
+        run: |
+          # Set aggressive caching for static assets
+          aws s3 cp dist/stradux/ s3://cross-border-platform/ --recursive \
+            --cache-control "max-age=31536000, public" \
+            --exclude "*.html"
+          
+          # Set no-cache for HTML files so index.html always fetches latest assets
+          aws s3 cp dist/stradux/ s3://cross-border-platform/ --recursive \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --include "*.html"
